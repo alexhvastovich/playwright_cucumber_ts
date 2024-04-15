@@ -1,0 +1,21 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cucumber:dev": "cucumber-js --tags @dev",
+    "cucumber:smoke": "cucumber-js --tags @smoke",
+    "cucumber:regression": "cucumber-js --tags @regression"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.4.0",
+    "@playwright/test": "^1.43.1",
+    "@types/node": "^20.12.7",
+    "playwright": "^1.43.1",
+    "ts-node": "^10.9.2",
+    "typescipt": "^1.0.0"
+  }
+}
