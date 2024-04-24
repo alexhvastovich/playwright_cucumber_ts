@@ -4,16 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cucumber:dev": "cucumber-js --tags @dev",
-    "cucumber:smoke": "cucumber-js --tags @smoke",
-    "cucumber:regression": "cucumber-js --tags @regression"
+    "transpile": "rimraf dist && babel --extensions .ts --out-dir dist src",
+    "cucumber-compile": "npm run transpile && cucumber-js",
+    "precucumber": "rimraf reports && mkdir reports && echo {} > reports/reports.json",
+    "cucumber": "set COMMON_CONFIG_FILE=.env && npm run cucumber-compile",
+    "postcucumber": "set COMMON_CONFIG_FILE=.env ts-node ./src/reporter/cucumber-report.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-typescript": "^7.24.1",
     "@cucumber/cucumber": "^10.4.0",
     "@playwright/test": "^1.43.1",
     "@types/node": "^20.12.7",
+    "cucumber-html-reporter": "^7.1.1",
+    "dotenv": "^16.4.5",
     "playwright": "^1.43.1",
     "ts-node": "^10.9.2",
     "typescipt": "^1.0.0"
